@@ -12,5 +12,10 @@ public partial class UnitsConverterView : ContentPage
 
 		Grid grid = sender as Grid;
 
+		Label label = grid.Children[1] as Label;
+
+
+        Navigation.PushAsync(new CalculatorView(label.Text));
+
     }
 }
