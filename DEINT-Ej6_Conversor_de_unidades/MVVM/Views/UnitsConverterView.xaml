@@ -45,7 +45,7 @@
                         Size="100" />
                 </Image.Source>
             </Image>
-            <Label HeightRequest="40" Grid.Row="1" Text="Information" HorizontalOptions="Center"/>
+            <Label HeightRequest="40" Grid.Row="1" Text="INFORMACION" HorizontalOptions="Center"/>
         </Grid>
         <Grid 
             Grid.Row="1" 

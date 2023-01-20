@@ -16,6 +16,10 @@ public partial class CalculatorView : ContentPage
 
 		this.Text = text;
 
+        txtTitle.Text = text;
+
+        translate();
+
 		FromMedidas = cargarMedidas();
 		ToMedidas = cargarMedidas();
 
@@ -24,9 +28,49 @@ public partial class CalculatorView : ContentPage
 
         toPicker.ItemsSource = ToMedidas.ToList<string>();
         toPicker.SelectedIndex = 1;
+
+        if (!txtOperation.Text.ToString().Equals(""))
+        {
+            txtRespuesta.Text = UnitConverter.ConvertByName(Double.Parse(txtOperation.Text.ToString()), Text, fromPicker.SelectedItem.ToString(), toPicker.SelectedItem.ToString()).ToString();
+        }
+
+    }
+
+	private void translate() {
+        switch (Text)
+        {
+            case "INFORMACION":
+                Text = "Information";
+                break;
+            case "VOLUMEN":
+                Text = "Volume";
+                break;
+            case "ALTURA":
+                Text = "Length";
+                break;
+            case "MASA":
+                Text = "Mass";
+                break;
+            case "TEMPERATURA":
+                Text = "Temperature";
+                break;
+            case "ENERGIA":
+                Text = "Energy";
+                break;
+            case "AREA":
+                Text = "Area";
+                break;
+            case "VELOCIDAD":
+                Text = "Speed";
+                break;
+            case "DURACION":
+                Text = "Duration";
+                break;
+        }
     }
 
 	private ObservableCollection<string> cargarMedidas() {
+
 		var types = Quantity.Infos
 			.FirstOrDefault(x => x.Name == Text)
 			.UnitInfos
@@ -38,8 +82,16 @@ public partial class CalculatorView : ContentPage
 
     private void txtOperation_TextChanged(object sender, TextChangedEventArgs e)
     {
-		if (!txtOperation.Text.ToString().Equals("")) {
-            txtRespuesta.Text = UnitConverter.ConvertByName(Double.Parse(txtOperation.Text.ToString()), Text, fromPicker.SelectedItem.ToString(), toPicker.SelectedItem.ToString()).ToString();
+        try {
+            if (!txtOperation.Text.ToString().Equals(""))
+            {
+                txtRespuesta.Text = UnitConverter.ConvertByName(Double.Parse(txtOperation.Text.ToString()), Text, fromPicker.SelectedItem.ToString(), toPicker.SelectedItem.ToString()).ToString();
+            }
+        } catch(FormatException) {
+            txtRespuesta.Text = "Syntax Error";
         }
+		
     }
+
+    
 }

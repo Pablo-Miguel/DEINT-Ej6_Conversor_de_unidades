@@ -12,12 +12,13 @@
         <Color x:Key="TextColor">White</Color>
     </ContentPage.Resources>
     <Grid 
-        RowDefinitions=".1*, *, *">
+        RowDefinitions=".2*, *, *">
 
         <Grid 
             Grid.Row="0"
             BackgroundColor="{StaticResource AppColor4}">
             <Label 
+                x:Name="txtTitle"
                 Text="Information" 
                 FontSize="Medium"
                 VerticalOptions="Center"/>
@@ -25,20 +26,20 @@
 
         <Grid 
             Grid.Row="1"
-            RowDefinitions=".5*, .5*"
+            RowDefinitions=".8*, .2*"
             BackgroundColor="{StaticResource AppColor1}"
             Padding="15"
             RowSpacing="20">
-            <Entry Grid.Row="0" FontSize="Title" x:Name="txtOperation" TextChanged="txtOperation_TextChanged" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Entry Grid.Row="0" FontSize="100" x:Name="txtOperation" Text="1" TextChanged="txtOperation_TextChanged" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Picker x:Name="fromPicker" Grid.Row="1" />
         </Grid>
         <Grid 
             Grid.Row="2"
-            RowDefinitions=".5*, .5*"
+            RowDefinitions=".8*, .2*"
             BackgroundColor="{StaticResource AppColor3}"
             Padding="15"
             RowSpacing="20">
-            <Label Grid.Row="0" FontSize="Title" x:Name="txtRespuesta" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Grid.Row="0" FontSize="100" x:Name="txtRespuesta" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Picker x:Name="toPicker" Grid.Row="1" />
         </Grid>
 
